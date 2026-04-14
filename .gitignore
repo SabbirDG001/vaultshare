@@ -1,0 +1,15 @@
+# Root
+node_modules/
+
+# Server
+server/.env
+server/uploads/*
+!server/uploads/.gitkeep
+server/node_modules/
+
+# Client
+client/node_modules/
+client/dist/
+
+# Logs
+*.log
