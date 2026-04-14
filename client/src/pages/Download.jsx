@@ -11,13 +11,13 @@ export default function Download() {
   const [downloading, setDownloading] = useState(false);
   const [timeLeft, setTimeLeft] = useState('');
   const [burned, setBurned] = useState(false);
-
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
   // ── Fetch vault info on mount ──────────────────────────────────────────────
   useEffect(() => {
     const fetchVaultInfo = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/vault/${token}`
+          `${API_URL}/vault/${token}`
         );
         setVaultInfo(res.data);
         setStatus('ready');
@@ -79,7 +79,7 @@ export default function Download() {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/vault/${token}/download`,
+        `${API_URL}/vault/${token}/download`,
         { passphrase: passphrase.trim() || undefined },
         { responseType: 'blob' }
       );
